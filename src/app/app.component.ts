@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'recipeBook';
+
+  pageCharger = 'recipe' ;
+  onNavigate(pageSelect: string) {
+      this.pageCharger = pageSelect;
+  }
 }
