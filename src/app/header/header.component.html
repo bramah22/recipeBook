@@ -1,19 +1,19 @@
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a href="#" class="navbar-brand">Livre de Recttes</a>
+      <a href="#" class="navbar-brand">Livre de Recettes</a>
     </div>
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li><a href="#" (click)="onSelect('recipe')">Recettes</a></li>
-        <li><a href="#" (click)="onSelect('shopping-list')">liste Achat</a></li>
+        <li routerLinkActive="active"><a routerLink="/recettes">Recettes</a></li>
+        <li routerLinkActive="active"><a [routerLink]="[ '/liste-achat']">Liste d'achats</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown" appDropdown>
-          <a href="#" class="dropdown-toggle" role="button">Données <span class="caret"></span></a>
+          <a class="dropdown-toggle" role="button">Données <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Sauvegarder</a></li>
-            <li><a href="#">Restaurer</a></li>
+            <li><a>Sauvegarder</a></li>
+            <li><a>Restaurer</a></li>
           </ul>
         </li>
       </ul>
