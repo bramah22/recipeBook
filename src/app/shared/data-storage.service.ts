@@ -4,6 +4,7 @@ import { RecipeService } from '../recipes/recipe.service';
 import 'rxjs/Rx';
 
 import { Recipe } from '../recipes/recipe.model';
+import { AuthService } from '../auth/auth.service';
 
 @Injectable()
 export class DataStorageService {
@@ -12,15 +13,18 @@ export class DataStorageService {
   FIREBASE_URL = 'https://ng-recipe-book-1cc8d.firebaseio.com/';
 
     constructor(private http: Http,
-                private recipeService: RecipeService) {}
+                private recipeService: RecipeService,
+                private authService: AuthService) {}
 
 
     storeRecipes() {
-        return this.http.put(this.FIREBASE_URL + 'recettes.json', this.recipeService.getRecipes());
+        const token = this.authService.getToken();
+        return this.http.put(this.FIREBASE_URL + 'recettes.json?auth=' + token, this.recipeService.getRecipes());
     }
 
     fetchDate() {
-        this.http.get(this.FIREBASE_URL + 'recettes.json')
+        const token = this.authService.getToken();
+        this.http.get(this.FIREBASE_URL + 'recettes.json?auth=' + token)
             .map(
                 (response: Response) => {
                     const recipes: Recipe[] = response.json();

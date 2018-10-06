@@ -10,7 +10,7 @@ export class RecipeService {
   private recipes: Recipe[] = [
     new Recipe('recette test' ,
       'juste une recette de test' ,
-      'http://www.lesenegal.net/wp-content/uploads/2017/12/maxresdefault-2.jpg',
+      'https://lukcam.files.wordpress.com/2014/11/11-img_2068.jpg',
       [
         new Ingredient('Tomates' , 2),
         new Ingredient('Viande' , 3)
