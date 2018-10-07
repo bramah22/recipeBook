@@ -1,7 +1,8 @@
 import {Component} from '@angular/core';
-import { RecipeService } from '../recipes/recipe.service';
-import { DataStorageService } from '../shared/data-storage.service';
-import { AuthService } from '../auth/auth.service';
+import { Response } from '@angular/http';
+
+import { DataStorageService } from '../../shared/data-storage.service';
+import { AuthService } from '../../auth/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -14,8 +15,8 @@ export class HeaderComponent {
   onStore() {
     this.dataStoreService.storeRecipes()
       .subscribe(
-        (response) => {
-          console.log('Données enregistrées avec succès');
+        (response: Response) => {
+          console.log(response);
         },
         (error) => {
           console.log(error);
@@ -29,5 +30,9 @@ export class HeaderComponent {
 
   onLogOut() {
     this.authService.logOut();
+  }
+
+  isAuthenticated() {
+    return this.authService.isAuthenticated();
   }
 }

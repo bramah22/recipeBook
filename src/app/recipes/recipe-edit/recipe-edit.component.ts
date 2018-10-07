@@ -89,6 +89,10 @@ export class RecipeEditComponent implements OnInit {
     this.onCancel();
   }
 
+  getControls() {
+    return (<FormArray>this.recipeForm.get('ingredients')).controls;
+  }
+
   // Annulation de la modification ou de la création
   onCancel() {
     this.router.navigate(['../'], {relativeTo: this.route});
