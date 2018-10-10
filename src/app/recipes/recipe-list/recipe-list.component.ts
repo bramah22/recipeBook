@@ -1,5 +1,5 @@
 import {Component, EventEmitter, OnInit, Output, OnDestroy} from '@angular/core';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { Recipe } from '../recipe.model';
