@@ -3,9 +3,7 @@ import { Subject } from 'rxjs';
 
 import {Recipe} from './recipe.model';
 import {Ingredient} from '../shared/ingredient.model';
-import {ShoppingListService} from '../shopping-list/shopping-list.service';
 
-@Injectable()
 export class RecipeService {
   // liste des recettes
   private recipes: Recipe[] = [
@@ -24,8 +22,7 @@ export class RecipeService {
         new Ingredient('pigments' , 5)
       ])
   ];
-
-  constructor(private slService: ShoppingListService) {}
+  
   recipeSelected = new EventEmitter<Recipe>();
   recipesChanged = new Subject<Recipe[]>();
 
@@ -37,9 +34,6 @@ export class RecipeService {
     return this.recipes.slice(); // Pour retourner une copie
   }
 
-  addIngredientsToShoppingList(ingredients: Ingredient[]) {
-    this.slService.addIngredients(ingredients);
-  }
 
   getRecipe(id: number) {
     return this.recipes[id];
@@ -47,7 +41,6 @@ export class RecipeService {
 
   addRecipe(recipe: Recipe) {
     this.recipes.push(recipe);
-    this.addIngredientsToShoppingList(recipe.ingredients);
     this.recipesChanged.next(this.recipes.slice());
   }
 

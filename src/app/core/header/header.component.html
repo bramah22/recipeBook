@@ -9,13 +9,13 @@
         <li routerLinkActive="active"><a [routerLink]="[ '/liste-achat']">Liste d'achats</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <ng-template [ngIf]="!isAuthenticated()">
+        <ng-template [ngIf]="!(authState | async).authenticated">
             <li><a routerLink="/creation-compte">Créer un compte</a></li>
             <li><a routerLink="/connexion">Se Connecter</a></li>
         </ng-template>
-        <li *ngIf="isAuthenticated()">
+        <li *ngIf="(authState | async).authenticated">
           <a style="cursor: pointer;" (click)="onLogOut()">Se deconnecter</a></li>
-        <li class="dropdown" appDropdown *ngIf="isAuthenticated()">
+        <li class="dropdown" appDropdown *ngIf="(authState | async).authenticated">
           <a class="dropdown-toggle" role="button">Données <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li ><a  style="cursor: pointer;" (click)="onStore()">Sauvegarder</a></li>
